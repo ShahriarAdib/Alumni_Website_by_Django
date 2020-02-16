@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<style>
+
+h1{
+    
+    color: white;
+    font-size: 60px;
+}
+
+h1.head{
+    text-align: center;
+}
+
+div.notice{
+  background-color:white;
+  position: absolute;
+  top: 100px;
+  right: 25px;
+  width: 1300px;
+  height: 530px;
+  border: 1.5px solid;
+  border-color: #111;
+  float:left;
+overflow: auto;
+
+}
+
+
+input.MyButton {
+width: 200px;
+padding: 20px;
+cursor: pointer;
+font-weight: bold;
+font-size: 100%;
+background:yellowgreen;
+color: black;
+border: 1px solid #3366cc;
+border-radius: 10px;
+position:absolute;
+top:80px;
+left:1120px;
+}
+
+
+input.MyButton:hover {
+color:white;
+background: #000;
+border: 1px solid #fff;
+}
+
+
+body {
+  margin-top: 30px;
+  background: lavender;
+  border: #000;
+}
+
+.top {
+  text-align: center;
+}
+
+.shadow {
+  box-shadow: 0px 0px 5px 20px;
+  padding-top: 10px;
+  background-color: aliceblue;
+overflow: auto;
+border: 2px solid;
+  border-color: #111;
+}
+
+h2, a{
+  color:black;
+}
+
+h2.x{
+    text-align: center;
+    color: white;
+    background-color:chocolate;
+}
+h2.des{
+font-size: 20px;
+}
+
+h3{
+    font-size: 16px;
+}
+
+
+</style>
+<body>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'alumni_app/page.css' %}">
+    
+    <h1 class="head">Forum</h1>
+        <div class="container">
+                <div class="top">
+                  <h2 class="x">ALUMNI COUNCIL</h2>
+                </div>
+                {%for i in post %}
+                <div class="row">
+                        
+                  <div class="shadow">
+                    <div class="col-sm-12">
+                      <div class="col-sm-8">
+                            <h2>Title : <a href="comment">{{i.title}}</a></h2>
+                            <h2 class="des">Description : {{i.text}}</h2>
+                            <h3>Author : {{i.author}}  / {{i.post_no}}</h3>
+
+                            <form  method="POST" action="{% url 'link:aiding' %}">
+                              {% csrf_token %}
+                      
+                            <div style = "max-width:470px;">
+                                  <center>
+                                      <input type = "hidden" style = "margin-left:20%;" name = "id" value="{{i.post_no}}" />
+                                  </center>
+                            </div>
+                              <button class="btn btn-primary" type="submit" name="ok" style="background-color:#3498DB">See Comments</button>
+                            </form>
+
+                      </div>
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                {%endfor%}
+              </div>
+
+<form>
+    <input class="MyButton" type="button" value="ADD NEW POST" onclick="window.location.href='forum'" />
+</form>
+
+
+</body>
+</html>

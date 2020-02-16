@@ -1,0 +1,84 @@
+{% load staticfiles %}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+<style>
+
+h1{
+    text-align: center;
+    color: black;
+}
+
+h2{
+    text-align: center;
+    color: black;
+}
+
+p{
+    text-align: center;
+}
+
+input.form-control {
+  width: 60%;
+  padding-left: 40px;
+  padding-bottom: 10px;
+  margin-top: 3px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  box-sizing: 20px 50px;
+  text-align: left;
+  size: 18px;
+}
+div {
+    border-radius: 0px;
+    padding-left: 10px;
+    padding-right: 80px;
+    text-align: left;
+    color: black;
+    font-size:18px;
+    padding-bottom: 20px;
+  }
+
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 52px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  
+}
+
+</style>
+<body>
+        {% load static %}
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'alumni_app/about.css' %}"> -->
+<h1>Forum </h1>
+
+<div>
+<form method="POST" enctype="multipart/form-data" class="form-group">
+{% csrf_token %}
+
+<div class="form-group">
+  <label> User : </label>
+  <br></br>
+  <input type="text" class="form-control" name=author value="{{user.username}}">
+  </div>
+  {{post_form.title|bootstrap}}
+  {{post_form.text|bootstrap}}
+
+<button type="submit" class="btn btn-primary btn-lg btn-block" style="background-color:#339966">POST</button>
+</form>
+</div>
+</body>
+</html>

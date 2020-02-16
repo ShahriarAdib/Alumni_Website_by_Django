@@ -1,0 +1,298 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<title>
+  RUET ALUMNI
+</title>
+<style>
+div.notice{
+  background-color:white;
+  position: absolute;
+  top: 300px;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  border: 1.5px solid;
+  border-color: #111;
+  float:left;
+overflow: auto;
+
+}
+
+div.upcoming_events{
+  background-color:white;
+  position: absolute;
+  top: 800px;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  border: 1.5px solid;
+  border-color: #111;
+  float:left;
+overflow: auto;
+
+}
+
+div.welcome{
+  background-color:white;
+  position: absolute;
+  top: 200px;
+  left:20px;
+  width: 1300px;
+  height: 80px;
+  border: 1.5px solid;
+  border-color: #111;
+
+}
+
+
+div.content{
+  background-color:white;
+  position: absolute;
+  top: 300px;
+  right: 600px;
+  left: 0px;
+  width: 845px;
+  height: 1000px;
+  border: 1px solid;
+  border-color: #111;
+}
+
+div.logo{
+  background-color:white;
+  position: absolute;
+  top: 0px;
+  right: 50%;
+  width: 70px;
+  height: 100px;
+  border: 0px solid;
+  border-color: #111;
+  float:left;
+overflow: auto;
+
+}
+
+h1.one{
+    text-align:left;
+    text-decoration: lightcyan;
+    size: 15px;
+    border-left: 15px solid red;
+    background-color: #f2f2f2;
+  }
+body {margin: 0;}
+
+
+
+
+div.sidebar{
+  padding-top: 50px;
+
+}
+
+
+h2{
+  text-align: center;
+}
+
+h2.x{
+  text-align: left;
+}
+
+h1.notice{
+  background-color:maroon;
+  color:seashell;
+}
+
+ul.horizontalnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  font-size: 20px;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+
+.top {
+  text-align: center;
+}
+
+.shadow {
+  box-shadow: 0px 0px 5px 20px;
+  padding-top: 10px;
+  background-color: aliceblue;
+overflow: auto;
+border: 2px solid;
+  border-color: #111;
+}
+
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#4CAF50;
+   color: white;
+   text-align: center;
+}
+
+.mySlides {display:none;}
+
+h1.welcome{
+  color:tomato;
+}
+
+</style>
+
+
+<body>
+
+    <!-- {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'alumni_app/home.css' %}"> -->
+
+<div class="logo">
+    {% load static %}
+    <img src="{% static "alumni_app/ruet_logo.jpg" %}" alt="My image" width="70">
+  </div>
+
+    <h1 class="one">RUET Alumni </h1>
+
+
+
+
+<div class="sidebar">
+
+<ul class="horizontalnav">
+  <li><a class="active" href="home">Home</a></li>
+  <li><a href="home/signin">Forums</a></li>
+  <li><a href="home/event">Events</a></li>
+  <li><a href="home/council">Council</a></li>
+  <li><a href="home/contact">Contact</a></li>
+  <li><a href="home/contact">Payment</a></li>
+  <li style="float:right"><a href="home/signin">Sign in</a></li>
+  <li style="float:right"><a href="home/about_page">About</a></li>
+
+</ul>
+</div>
+
+
+<div class="content">
+    {% load static %}
+  <h2>RUET Alumni-Webside</h2>
+  <img class="mySlides" src="{% static "alumni_app/ruet_gate.jpg" %}" style="width:100%">
+  <img class="mySlides" src="{% static "alumni_app/shahidminar.jpg" %}" style="width:100%">
+
+</div>
+
+
+<div class="notice">
+
+  <h1 class="notice">Notice</h1>
+    
+    {%for i in description %}
+
+    <div class="row">
+                        
+        <div class="shadow">
+          <div class="col-sm-12">
+            <div class="col-sm-8">
+                  <h2 class="x">Notice No : {{i.notice_no}}</h2>
+                  <h2 class="x">Notice : {{i.description}}</h2>
+                  <h3>{{i.notice_time}}</h3>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+
+    <!-- <h3>Notice no : {{i.notice_no}} <br>Notice: {{i.description}}</br>{{i.notice_time}} </h3> -->
+{%endfor%}
+</div>
+
+<div class="upcoming_events">
+    {% load staticfiles %}
+  <h1 class="notice">Upcoming events</h1>
+
+  {%for i in upcomming %}
+
+  <div class="row">
+                      
+      <div class="shadow">
+        <div class="col-sm-12">
+            <div class="col-sm-2">
+                {% if i.event_picture %}
+                <img src="{{ i.event_picture.url }}"  class="img-circle" width="200px">
+                {% endif %}
+          </div>
+          <div class="col-sm-8">
+                <h2 class="x">Title : {{i.event_title}}</h2>
+                <h2 class="x">Upcoming Event : {{i.event_title}}</h2>
+                <h2 class="x">Event : {{i.event_description}}</h2>
+                </div>
+                </div>
+                </div>
+                </div>
+                {%endfor%}
+</div>
+
+
+<div class="footer">
+    <p>©Shahriar Adib || Roll: 15030354</p>
+  </div>
+
+  <div class="welcome">
+      <marquee> <h1 class="welcome">Welcome to RUET Alumni </h1></marquee>
+  </div>
+
+
+
+  <script>
+      var myIndex = 0;
+      carousel();
+      
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 4000); // Change image every 2 seconds
+      }
+      </script>
+
+
+
+</body>
+</html>

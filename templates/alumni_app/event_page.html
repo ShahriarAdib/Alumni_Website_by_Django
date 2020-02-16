@@ -1,0 +1,70 @@
+{% load staticfiles %}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Event</title>
+</head>
+
+<style>
+
+h1.head{
+    text-align: center;
+    color: aliceblue;
+}
+
+h2.a{
+    color: aliceblue;
+}
+
+body {
+  margin-top: 30px;
+  background: lavender;
+}
+
+.top {
+  text-align: center;
+}
+
+.shadow {
+  box-shadow: 0px 0px 80px 0px;
+  padding-top: 10px;
+}
+
+h2, a{
+  color:black;
+}
+</style>
+<body>
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'alumni_app/page.css' %}">
+        {% load staticfiles %}
+        <div class="container">
+                <div class="top">
+                  <h1 class="head">Evnets</h2>
+                </div>
+                {%for i in event %}
+                <div class="row">
+                        
+                  <div class="shadow">
+                    <div class="col-sm-12">
+                      <div class="col-sm-2">
+                            {% if i.event_picture %}
+                            <img src="{{ i.event_picture.url }}"  class="img-circle" width="350px">
+                            {% endif %}
+                      </div>
+                      <div class="col-sm-8">
+                            <h2 class="a">Title : {{i.event_title}}</h2>
+                            <h2 class="a">Description : {{i.event_description}}</h2>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+                {%endfor%}
+              </div>
+
+</body>
+</html>

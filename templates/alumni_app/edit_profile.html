@@ -1,0 +1,151 @@
+{% load staticfiles %}
+{% load bootstrap %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'alumni_app/edit_profile.css' %}">
+<style>
+
+
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 52px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  
+}
+
+
+div {
+    border-radius: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: left;
+    color: black;
+    font-size:18px;
+    padding-bottom: 20px;
+  }
+
+div.content{
+  background-color:transparent;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 600px;
+  width: 845px;
+  height: 850px;
+  border: 1px solid;
+  border-color: #111;
+  background-image: url(edit.jpg);
+}
+
+div.profile{
+  background-color:transparent;
+  position: absolute;
+  top: 0px;
+  right: 900px;
+  left: 0px;
+  width: 600px;
+  height: 850px;
+  border: 1px solid;
+  border-color: #111;
+}
+
+
+div.submit{
+  text-align: center;
+  background-color: honeydew;
+
+}
+
+div.sign_up
+{
+  padding-left: 30%;
+
+}
+  input.form-control {
+  width: 60%;
+  padding-left: 40px;
+  padding-bottom: 10px;
+  margin-top: 3px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  box-sizing: 20px 50px;
+  text-align: left;
+  size: 18px;
+}
+
+h1{
+  text-align: center;
+  
+}
+
+
+</style>
+
+
+
+	
+<div class="content">
+<h1> UPDATE </h1>
+
+		<form method="POST" enctype="multipart/form-data" class="form-group">
+					<div class="sign_up">
+                       {% csrf_token %}
+                     {{user_form|bootstrap}}
+                    {{signup_form|bootstrap}}
+            
+          </div>
+          <div class="submit">
+              <button type="submit" class="btn btn-primary btn-lg btn-block" style="background-color:#339966">Update</button>
+        
+    </div>
+          
+     </form>
+
+    </div>
+
+    <div class="profile">
+
+    <h1>Profile Info</h1>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+
+    <h3 >User Name:&nbsp;&nbsp;{{user.username}}</h3>
+    <h3 >Name: &nbsp;&nbsp;{{user.user_signup.Name}}</h3>
+    <h3 >Email:&nbsp;&nbsp;{{user.email}}</h3>
+    <h3 >Phone_No:&nbsp;&nbsp;{{user.user_signup.Mobile}}</h3>
+    <h3 >Address:&nbsp;&nbsp;{{user.user_signup.Address}}</h3>
+    <h3 >Series: &nbsp;&nbsp;{{user.user_signup.Series}}</h3>
+
+
+</div>
+
+{% if user.user_signup.image %}
+<img src= "{{ user.user_signup.image.url }}" width="240">
+{% endif %}
+
+</div>
+
+
+
+
+
+</body>
+</html>

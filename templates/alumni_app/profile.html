@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+
+<style>
+div.page{
+  background-color:greenyellow;
+  position: absolute;
+  top: 150px;
+  right: 0px;
+  left: 500px;
+  width: 845px;
+  height: 500px;
+  border: 1px solid;
+  border-color: #111;
+}
+
+div.profile{
+  background-color:transparent;
+  position: absolute;
+  top: 150px;
+  right: 25%;
+  left: 25%;
+  width: 700px;
+  height: 500px;
+  border: 5px solid;
+  border-color: #111;
+  
+}
+div.button{
+  background-color:transparent;
+  position: absolute;
+  top: 300px;
+  right: 1100px;
+  left: 5px;
+  width: 50px;
+  height: 50px;
+  border-color: #111;
+  
+}
+
+div.button_post{
+  background-color:transparent;
+  position: absolute;
+  top: 400px;
+  right: 1100px;
+  left: 5px;
+  width: 50px;
+  height: 50px;
+  border-color: #111;
+  
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 52px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 20px;
+  
+}
+
+ul.horizontalnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  font-size: 20px;
+}
+
+li {
+  float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  border-right: none;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+h1.welcome{
+  text-align: center;
+}
+
+</style>
+    
+<body>
+
+    <ul class="horizontalnav">
+        <li><a class="active" href="#home">Announcements</a></li>
+        <li><a href="forum_view">Forums</a></li>
+        <li><a href="home/signin">Organization</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li style="float:right"><a href="">Sign Out</a></li>
+        <li style="float:right"><a href="edit_profile">Update</a></li>
+        <li style="float:right"><a href="{% url 'index' %}">Log Out</a></li>
+      
+      </ul>
+
+      <h1 class="welcome">Welcome {{user.username}}</h1>
+
+{% load staticfiles %}
+
+<div class="profile">
+
+
+
+    <h3 >User Name:&nbsp;&nbsp;{{user.username}}</h3>
+    <h3 >Name: &nbsp;&nbsp;{{user.user_signup.Name}}</h3>
+    <h3 >Email:&nbsp;&nbsp;{{user.email}}</h3>
+    <h3 >Phone_No:&nbsp;&nbsp;{{user.user_signup.Mobile}}</h3>
+    <h3 >Address:&nbsp;&nbsp;{{user.user_signup.Address}}</h3>
+    <h3 >Series: &nbsp;&nbsp;{{user.user_signup.Series}}</h3>
+
+
+</div>
+
+{% if user.user_signup.image %}
+<img src= "{{ user.user_signup.image.url }}" width="240">
+{% endif %}
+
+
+<!-- <div class="button">
+<button ><a href="edit_profile">UPDATE</button>
+</div>
+
+<div class="button_post">
+    <button ><a href="edit_profile">Forum</button>
+</div> -->
+
+
+
+
+
+
+    
+
+
+</body>
+</html>
